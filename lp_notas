@@ -1,0 +1,61 @@
+linguagens de programação
+
+
+======= 07/08 - Gramáticas ========
+	1) imperativas: é um programa que tem estado
+		estado: se relaciona com a memória
+		sequência de ordens. De como o pc deve alterar seu estado
+		exemplos: c, c++, java, python, C#
+		modelo de computação: maquina de turing
+
+	2) declarativas: é um programa que não tem estado
+		A dif entre func e log: é o modelo de computação
+		2.1) funcionais
+			modelo de computação: cálculo lambda
+			- ml, haskell, erlang, elixir
+		2.2) lógicas
+			modelo de computação: cálculo de horn
+			- prolog, datalog, 
+
+
+	gramáticas: variáveis, constantes, regra de início e produções
+		<N, T, P, S>
+		N = não terminais
+		T = terminais
+		P = Regras de produção
+		S = start
+
+		coisas terminais e não terminais
+		gramática do slide de sirpinski: sistema L (fractais)
+		Chomsky, inventor do termo gramática
+
+	Gramáticas ajudaram muito no paring
+		Problema do parsing: saber como quebrar uma string numa árvore que representa a estrutura de dados
+		Notação BNF: backas and naur form (backas: fortran e algol)
+		Algol trouxe a gramática para parsing
+		parsing é produzir árvores de derivação
+		Se uma string pode gerar 2 árvores não isomorfas, a gramática é ambígua
+		a ambiguidade compromete a semântica
+		saber se uma gramática é ambigua, é um problema indecidível. Pq são infinitas strings possíveis
+
+	prolog: swipl nas máquinas do DCC
+		minuscula: terminal, maiusc. eh nãot
+
+	hierarquia de gramáticas
+		sensíveis ao contexto: podem ter vários símbolos ao lado esq. aAb -> xyz
+			irrestritas (turing machine)
+
+		livres de contexto: lado esq da regra de prod. é só um nterminal
+			as que usaremos nesse curso
+
+		regulares: descrevem os terminais
+			p->terminal + P
+			p->terminal
+			p->nada
+
+
+
+-- ver de escrever gramáticas em prolog
+
+		(x86 tem 8 registradores. Alguns genéricos e outros de uso especial)
+

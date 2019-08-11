@@ -14,9 +14,8 @@ linguagens de programação
 			modelo de computação: cálculo lambda
 			- ml, haskell, erlang, elixir
 		2.2) lógicas
-			modelo de computação: cálculo de horn
+			modelo de computação: horn clause
 			- prolog, datalog, 
-
 
 	gramáticas: variáveis, constantes, regra de início e produções
 		<N, T, P, S>
@@ -39,7 +38,7 @@ linguagens de programação
 		saber se uma gramática é ambigua, é um problema indecidível. Pq são infinitas strings possíveis
 
 	prolog: swipl nas máquinas do DCC
-		minuscula: terminal, maiusc. eh nãot
+		minuscula: terminal, maiusc. eh nãoterminal
 
 	hierarquia de gramáticas
 		sensíveis ao contexto: podem ter vários símbolos ao lado esq. aAb -> xyz

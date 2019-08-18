@@ -107,8 +107,57 @@ questão dos atributos e prolog: sem eles, fica só em grams livres de contexto
 
 abc  --> as(n), bs(n), cs(n)
 as(0) -->[]
-as(n) -->[a], as(nn), {n s nn+1}
-b...
+as(n) -->[a], as(nn), {n is nn+1}
+b...s
 c...
 
+
+
+
+
+==== 14/08 - ==============================
+
+	- compilar, interpretar, virtualizar
+	- virtualizar (python): compila pra bytecode, interpreta o bytecode
+		- máquins virtuais:jvm, clr, zend, cpython
+		- cada navegador tem sua VM de js (Chrome: v8; firefox:spiderMonkey, safari: jsCore (ou webKit))
+		- JVM interpeta várias linguagens: JAva, Kotlin, Groovy, Closure, Scala
+		....
+	- Pq das diferenças? Compiladas são mais eficientes
+		- site the benchmark game
+		- Eficiência
+		- Se T = P + X
+			- compilar é bo quando X é grande. Faz uma vez e pronto
+			- interpretaré bom para applications e scripts de protótipos
+				compilada  virt   inter AST
+			P     G         M      P
+			X     P         M      G
+			* AST = ?
+		- Executar o bytecode usufrui de localidade e por isso é mais rápido do que percorrer uma árvore
+
+	Compilação de um programa C
+	source -> [preprocessar] -> source ASCII -> [compilador] -> Assembly ASCII -> [montador] -> .obj -> [linker] -> .exe -> [loader] -> \o/
+	[prof mostrou a compilação passo a passo]
+	|?| identidades aritméticas no GCC
+	o printf fica numa biblioteca dinamicamente compartilhada - GLIBC 
+		Arquivos dessas libs tem extensões .so(Linux) .dll(windows) .dylib(Mac)
+		O loader resolve isso em tempo de execução 
+	comandos em bash estão na lib binutils (implementado em C)
+
+	Vantagens da virtualização
+	|?| OLhar com mais detalhe
+		- cod binario de um ling compilada não é portável
+		- o bytecode de uma VM é
+
+	[prof demonstrou virtualização]
+	- tempo de ligação de um programa C é em tepo de compilação. Só sabemos se uma varé int mesmo qnd compila
+	- em python, por exemplo, é em execução
+
+	- o tamanho de um int em java fidefinido em tempo de definição da linguagem
+	- Em C,é definido em tempo de implementação da linguagem
+
+	- diferentes coisas são conhecidas em diferentes tempos, para diferentes linguagens
+
+
+	
 

@@ -7,7 +7,7 @@ linguagens de programação
 		1) Manipulate memory	
 
 ======= 07/08 - Gramáticas ========
-	1) imperativas: é um programa que tem estado
+	1) imperativas: é um programa que tem estado e um squencia de coamndos que alteram o estado
 		estado: se relaciona com a memória
 		sequência de ordens. De como o pc deve alterar seu estado
 		exemplos: c, c++, java, python, C#
@@ -160,4 +160,68 @@ c...
 
 
 	
+
+==== 19/08 - SML ============================================
+
+tese de churc turing: intercambio entre impoerativo e funcionl
+
+- "todo prog em ML e um valor"
+- ml faz inferencia de tipos
+- Milnar: algoritmo de inf de tipos, baseado na tecnica de unificação
+- questão de não comparar floats
+	fun rcomp = (a:real, b) = not(a < b orelse b < a);
+- tipos primitivos: int, real, bool, char, string
+- não existe coerção implícita
+- operadores relacionais: orelse, andalso
+	- implementam semântica de curto circuito: avalio o mínimo necessário pra encontrar uma resposta
+- todo if tem o then e o else, pq sempre tem que retornar algum valor
+- operadores por ordem de precedêcia:
+	orelse
+	andalso
+	= < > ...
+	+ - ^(string concat)
+	* / div(parte inteira da divisao) mod
+	chamada de função
+	ret ~(menos unário)
+- multiplicação de ints e de float são algoritmos em diferentes
+- |?| Sobrecarga
+- variáveis são imutáveis. Caso o mesmo nome seja reutilizado, outro endereço de mem será criado
+
+tuplas e indexação
+	val x(1, 2, 3)
+	#1 x (indexação)
+	#3(#2 y)) retornar terceiro elemento do segundo elemento
+- coleção heterogênea
+- toda função recebe apenas 1 parâmetro, nem que seja uma tupla
+- não tem tupla de um valor só
+
+listas
+- coleção homogênea
+- operações possíveis: hd e tl
+- @ (concat listas) - linear no tamanho da primeira lista
+- 1::x (prepend na lista)
+- |*| implementar uma função que leia um índice arbitrário de uma lista
+
+- |?| pesquisar: exemplo de algo que não é possível implementar com a mesma complexidade em C e ML
+	
+- hd;
+	- 'a : template de tipo
+* função explode: quabra a string em lista de char
+
+- construtores de tipos
+	* 
+	->
+	[]
+
+|*| reimplementar
+- fun len s = if null then 0 else 1 + len (tl s)
+- fun sum l = if null then 0 else (hd l) + sum(tl l)
+- fun rev L = if null L then nil else (rev(tl L)) @ [hd L]
+- fun max
+- fun zip
+- fun fib 
+
+- rola de especificar o tipo igual python
+
+- cuidado pra não usar igualdade em listas que são de floats
 

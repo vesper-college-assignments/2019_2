@@ -1,0 +1,329 @@
+linguagens de programação
+
+
+======= 05/08 - Sobre Linguagens de programação ========
+	1) Turing completness: LP that are Turing complete are the ones tht can simulate a Turing Machine
+		To be turing complete,a language has to:
+		1) Manipulate memory	
+
+======= 07/08 - Gramáticas ========
+	1) imperativas: é um programa que tem estado e um squencia de coamndos que alteram o estado
+		estado: se relaciona com a memória
+		sequência de ordens. De como o pc deve alterar seu estado
+		exemplos: c, c++, java, python, C#
+		modelo de computação: maquina de turing
+
+	2) declarativas: é um programa que não tem estado
+		A dif entre func e log: é o modelo de computação
+		2.1) funcionais
+			modelo de computação: cálculo lambda
+			- ml, haskell, erlang, elixir
+		2.2) lógicas
+			modelo de computação: horn clause
+			- prolog, datalog, 
+
+	gramáticas: variáveis, constantes, regra de início e produções
+		<N, T, P, S>
+		N = não terminais
+		T = terminais
+		P = Regras de produção
+		S = start
+
+		coisas terminais e não terminais
+		gramática do slide de sirpinski: sistema L (fractais)
+		Chomsky, inventor do termo gramática
+
+	Gramáticas ajudaram muito no parsing
+		Problema do parsing: saber como quebrar uma string numa árvore que representa a estrutura de dados
+		Notação BNF: backas and naur form (backas: fortran e algol)
+		Algol trouxe a gramática para parsing
+		parsing é produzir árvores de derivação
+		Se uma string pode gerar 2 árvores não isomorfas, a gramática é ambígua
+		a ambiguidade compromete a semântica
+		saber se uma gramática é ambigua, é um problema indecidível. Pq são infinitas strings possíveis
+
+	prolog: swipl nas máquinas do DCC
+		minuscula: terminal, 
+		maiúscula: não terminal
+
+	hierarquia de gramáticas
+		livres de contexto: lado esq da regra de prod. é só um não terminal
+			as que usaremos nesse curso
+
+		sensíveis ao contexto: podem ter vários símbolos ao lado esq. aAb -> xyz
+			irrestritas (turing machine)
+
+		regulares: descrevem os terminais
+			p->terminal + P
+			p->terminal
+			p->nada
+
+
+-- ver de escrever gramáticas em prolog
+(x86 tem 8 registradores. Alguns genéricos e outros de uso especial)
+
+
+======= 12/08 -  ========
+	
+
+
+	Parsing é importante porque?
+		a árvore de derivação simplifica muito o parsing. Se um nó é <declarcao> o lado esquerdo vai ser o tipo
+		a estrutura de daods facilita todo problema de processar um programa
+		a gramática permite fazer o parsing
+	
+
+	tem aspectos da linguagem não são resolvidos apenas pela sintaxe, preciso
+	
+	O que se resolve pela sintaxe:
+		associatividade
+		precedência de operadores
+
+	algoritmo que visita a árvore avaliando as folhas
+	Qnt mais perto das olhas, mais a precedência
+
+
+	Qnd temos apenas 1 tipo de operador, nosso problema é a associatividade
+	op de subtração não é comutativa então precisamos estabeleer associatividade, que no caso, é à esquerda
+	Atribuição é associativa à direita
+
+	Uma gramática não ambígua para parsing de subtração com asociatividade à esquerda:
+	E ::= E - M
+		| M
+	M::= R * M
+		| R
+	R::= num
+
+
+		
+number(N, 1) --> digit(N)
+number(N, C) --> digit(ND), number(NN, C1), {
+	C is C1 * 10,
+	N is ND * C + NN
+}.
+
+
+questão dos atributos e prolog: sem eles, fica só em grams livres de contexto
+
+
+abc  --> as(n), bs(n), cs(n)
+as(0) -->[]
+as(n) -->[a], as(nn), {n is nn+1}
+b...s
+c...
+
+
+
+
+
+==== 14/08 - ==============================
+
+	- compilar, interpretar, virtualizar
+	- virtualizar (python): compila pra bytecode, interpreta o bytecode
+		- máquins virtuais:jvm, clr, zend, cpython
+		- cada navegador tem sua VM de js (Chrome: v8; firefox:spiderMonkey, safari: jsCore (ou webKit))
+		- JVM interpeta várias linguagens: Java, Kotlin, Groovy, Closure, Scala
+		....
+	- Pq das diferenças? Compiladas são mais eficientes
+		- site the benchmark game
+		- Eficiência
+		- Se T = P + X
+			- compilar é bo quando X é grande. Faz uma vez e pronto
+			- interpretaré bom para applications e scripts de protótipos
+				compilada  virt   inter AST
+			P     G         M      P
+			X     P         M      G
+			* AST = ?
+		- Executar o bytecode usufrui de localidade e por isso é mais rápido do que percorrer uma árvore
+
+	Compilação de um programa C
+	source -> [preprocessar] -> source ASCII -> [compilador] -> Assembly ASCII .s -> [montador] -> .obj -> [linker] -> .exe -> [loader] -> \o/
+	
+
+	[prof mostrou a compilação passo a passo]
+	|?| identidades aritméticas no GCC
+	o printf fica numa biblioteca dinamicamente compartilhada - GLIBC 
+		Arquivos dessas libs tem extensões .so(Linux) .dll(windows) .dylib(Mac)
+		O loader resolve isso em tempo de execução 
+	
+	comandos em bash estão na lib binutils (implementado em C)
+
+	Vantagens da virtualização
+		- cod binario de um ling compilada não é portável
+		- mais segurança
+		- o bytecode de uma VM é ???
+
+	[prof demonstrou virtualização]
+	- tempo de ligação de um programa C é em tempo de compilação. Só sabemos se uma var é int mesmo qnd compila
+	- em python, por exemplo, é em execução
+
+	- o tamanho de um int em java fidefinido em tempo de definição da linguagem
+	- Em C,é definido em tempo de implementação da linguagem
+
+	- diferentes coisas são conhecidas em diferentes tempos, para diferentes linguagens
+
+	
+BINDING TIME
+============
+	- Preprocessing -E
+		- resolve macros e constantes globais DEFINEs
+	- linking time: conecta
+	- Load time: sobe pra memória
+	- Runtime
+
+	Flags de compilação
+		-E (preprocessing) gera
+		-S (gera o assembly) assembly
+		-C (Linker)
+		-ld (loader)
+
+
+
+
+==== 19/08 - SML ============================================
+
+tese de churc turing: intercambio entre imperativo e funcional
+
+- "todo prog em ML é um valor"
+- ml faz inferencia de tipos
+- Milnar: algoritmo de inf de tipos, baseado na tecnica de unificação
+
+- questão de não comparar floats
+	fun rcomp = (a:real, b) = not(a < b orelse b < a);
+- tipos primitivos: int, real, bool, char, string
+
+- não existe coerção implícita: não existe casting de tipos
+
+- operadores relacionais: orelse, andalso
+	- implementam semântica de curto circuito: avalia o mínimo necessário pra encontrar uma resposta
+	- Tecnicamente são keywords
+
+- todo if tem o then e o else
+	- pq sempre tem que retornar algum valor
+
+- funções geralmente tem alta precedência
+
+- Tupla é a estrutura de dados de SML
+		- indexado por 1
+		- não tem tupla de 1 elemento
+		- representada por um *
+
+- @ concat 2 listas: O(n)
+- :: ele + lista O(1)
+	- Associado à direita. Atribuição tb
+
+- operadores por ordem de precedêcia:
+	7. orelse
+	6. andalso
+	5. = < > <= >=
+	4. + - ^(string concat)
+	3. * / div(parte inteira da divisao) mod
+	2. ret ~(menos unário)
+	1. chamada de função
+
+
+- multiplicação de ints e de float são algoritmos diferentes
+- |?| Sobrecarga: qnd se define 2 funções como mesmo nome
+- variáveis são imutáveis. Caso o mesmo nome seja reutilizado, outro endereço de mem será criado
+
+tuplas e indexação
+	val x(1, 2, 3)
+	#1 x (indexação)
+	#3(#2 y)) retornar terceiro elemento do segundo elemento
+	Melhor usar pattern matching
+
+	- coleção heterogênea
+	- toda função recebe apenas 1 parâmetro, nem que seja uma tupla
+	- não tem tupla de um valor só
+
+listas
+- coleção homogênea
+- operações possíveis: hd e tl
+- @ (concat listas) - linear no tamanho da primeira lista
+- 1::x (prepend na lista)
+- |*| implementar uma função que leia um índice arbitrário de uma lista
+
+- |?| pesquisar: exemplo de algo que não é possível implementar com a mesma complexidade em C e ML
+	
+- hd;
+	- 'a : template de tipo
+* função explode: quabra a string em lista de char
+
+- construtores de tipos
+	* 
+	->
+	[]
+
+|*| reimplementar
+- fun len s = if null then 0 else 1 + len (tl s)
+- fun sum l = if null then 0 else (hd l) + sum(tl l)
+- fun rev L = if null L then nil else (rev(tl L)) @ [hd L]
+- fun max
+- fun zip
+- fun fib 
+
+- rola de especificar o tipo igual python
+
+- cuidado pra não usar igualdade em listas que são de floats
+
+
+
+SISTEMAs DE TIPOS
+=================
+	- tipagem estática: linguagens que definem tipos em tempo de compilação
+		- C, C++, C#, Go, Assembly, Swift
+	- tipagem dinâmica
+		- Js, Pyhton, Ruby, SML
+
+	- Forte: Não muda (python)
+			- Fraca: Pode mudar ao longo do programa 
+		C, C++, C#, PHP e JS
+	- Forte: 
+		Python, Haskell, Go, Java, SML
+
+
+POLYMORPHISM
+============
+	Ad-hoc
+		Coercion
+		Overloading
+	
+	Universal
+		parametric
+			- template
+		Subtyping
+			- herança é um jeito de subtyping
+
+
+
+REGISTROS DE ATIVAÇÃO
+=====================
+
+- Memória de instrução x memória de dados
+- Registro de ativação: espaço na mem de dados que guarda todas as info necessarias para a func fncionar
+
+Nível 0: padrão
+	- endereço de retorno
+	- parâmetros da função
+	- valor de variáveis locais
+Nível 1: Para quando tem recursão
+	- todos os acima
+	- link do último registro de ativação para desempilha e retornar
+Nível 2: Para quando tem funcões aninhadas (inclui uma função dentro de uma classe)
+	- Link de aninhameno
+Nível 3: Closure (pesquisar)
+	- Endereço das funções
+	- Tabela com as variáveis livres
+
+- Quando eu chamo uma função, que não tá dentro de outra função, o valor do link de aninhamento é NULL (0)
+- Se eu chamo a funçao ninhada pela primeira vez, o link de aninhamento dela é endereço do link de aninhamento da aninhadora
+- endereço de retorno e link de aninhamento têm tipos diferentes
+	- endereço de retorno aponta par mem d intruções
+	- link de aninhamento aponta para mem de dados
+- Se eu chamo uma função aninhada recursivamente: copio o link de aninhamento da chamada n-1
+
+Quando NÃO posso desalocar o registro de ativação?
+	- quando temos variáveis livres na função ninhadora que serão utilizadas depois que af unção retornar
+	- Para guardar o local dessas variáveis, usamos uma tabela com as variǘeis livres
+	- A endereço da função + a tabela chama CLOSURE
+	- A closure não desaloca imediatamente. Somente qnd não já mais nada apontando para erlang

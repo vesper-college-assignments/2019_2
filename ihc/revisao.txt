@@ -1,0 +1,125 @@
+conceitos
+	affordance
+	signifiers
+
+qualidades de uso
+	usabilidade
+		facilidade de aprender
+		facilidade de lembrar
+		segurança
+		satisfação do usuário
+	comunicabilidade
+	acessibilidade
+	experiência de uso
+
+teorias de IHC
+	engenharia semiótica
+		designcoocomunicação
+		metamensagem
+		signos estaticos, dinamicos e metalinguisticos
+	engenharia cognitiva
+		travessia dos golfos
+		intenção-planejamento da ação-execução-percepção-interpretação-avaliação
+		intenção-----distancia semantica----planejamento
+		planejamento----distancia arrticulatoria------execução
+    
+
+processos de design
+	atividades básicas:
+		análise da situação atual
+		síntese da intervenção
+		análise da intervenção, comparativo à situação anterior
+	
+	ciclo de desenvolvimento estrela
+		pode começar de qq ponto
+		avaliação sempre entre etapas
+		muito flexivel, dificulta. pouco usado
+		top-down e bottom-up
+	
+	centrado no usuário
+		foco no usuário
+		identificar e documentar requisitos de qualidade
+		iterar
+
+	centrado na comunicação
+		basicamente engenharia semiótica
+		avalia as rupturas na comunicação: o que, quando, como, onde?
+		
+	engenharia de usabilidade
+		mais próximo da engenharia de software
+		guia de estilo para requisitos de usabilidade
+		análise competitiva - benchmark
+		design participativo
+	
+	design contextual
+		investigação minuciosa do contexto real de uso
+		prototipação
+
+	design baseado em cenários
+		cenário do problema
+		cenário da atividade
+		cenário de informação (que o sistema provê ao usuário)
+		cenários de interação
+		vantagens dos cenários:
+			escritos em linguagem natural, favorecem a compreensão
+			estimula a discssão e o impacto da tec nos usuários
+			estiula análise de caminhos alternativos
+
+conhecendo o usuário
+	porque conhecer o usuário
+	representação do usuário
+		personas
+		cenários
+	ferramentas de coleta de dados
+		questionario: publico grande e disperso
+		entrevista: aprofundar questões
+		grupo focal: entender consensos e pontos de conflito
+		brainstorming: geração de ideias para publico parecido
+		cardsorting: arquitetura de informação
+		etnografia: início da exploração de um problema
+		estudo de caso: descrição minuciosa e holística de um caso
+		diário de uso: registro adjacente ao udo em contexto real
+		registros de uso: logs, basicamente
+
+
+avaliação
+	importancia
+		verificar se o sistema apoia adequadamente
+
+	analitica
+		inspeção
+		preditiva
+	estudo de campo
+		interpretativa
+	ambiente controlado
+		experimental
+
+	Avaliação analítica: inspeção por especialista, baseada emmodelos
+		(+) mais barato que teste controlado
+		(-) não avalia a experiência do usuário
+
+	Avaliação em ambiente controlado: epecialista prepara os dados
+		(+) baseada na experiência real do usuário
+		(-) mais caro que avaliação analítica
+		(-) ambiente não natural para o usuário
+
+	Avaliação em campo: observar o uso na vida real
+		(+) Especialista conseue ver a influência do contexto real no uso do sistema
+		(-) Alto custo e dificil de implementar
+		(-) Difícil comprar os dados
+
+	Avaliação oportunista ou informal: pedir opinião de alguém
+		(+) Fácil e barato
+		(-) Superficial
+
+	Testes piloto
+		- Dados do piloto não podem ser considerados na análise do sistema 
+
+	framework DECIDE
+		D - Determinar objetivos gerais
+		E - Explorar objetivos específicos
+		C - Escolher paradigma e técnicas, frameworks
+		I - Identificar questões práticas 
+		D - Decisoes éticas
+		E - Avaliar
+	
